@@ -1,0 +1,42 @@
+using System;
+
+namespace MathApp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Instantiate the MathOperations class
+            MathOperations mathOps = new MathOperations();
+
+            // Step 1: Call the first method with an integer
+            Console.WriteLine("Enter an integer:");
+            int userInputInt = Convert.ToInt32(Console.ReadLine());
+            int resultInt = mathOps.PerformOperation(userInputInt);
+            Console.WriteLine($"The result of the integer operation is: {resultInt}");
+
+            // Step 2: Call the second method with a decimal
+            Console.WriteLine("\nEnter a decimal:");
+            decimal userInputDecimal = Convert.ToDecimal(Console.ReadLine());
+            int resultDecimal = mathOps.PerformOperation(userInputDecimal);
+            Console.WriteLine($"The result of the decimal operation is: {resultDecimal}");
+
+            // Step 3: Call the third method with a string representing an integer
+            Console.WriteLine("\nEnter a string that represents an integer:");
+            string userInputString = Console.ReadLine();
+            try
+            {
+                int resultString = mathOps.PerformOperation(userInputString);
+                Console.WriteLine($"The result of the string operation is: {resultString}");
+            }
+            catch (ArgumentException ex)
+            {
+                // Handle exception if the string cannot be converted to an integer
+                Console.WriteLine(ex.Message);
+            }
+
+            // Pause to allow the user to see the output before the program closes
+            Console.ReadKey();
+        }
+    }
+}
